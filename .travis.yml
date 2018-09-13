@@ -19,7 +19,5 @@ jobs:
 stages:
   - compile
   - test
-  - name: archive
-    if: branch != master
+  - archive
   - deploy
-    if: branch != master
