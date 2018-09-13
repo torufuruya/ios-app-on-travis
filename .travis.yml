@@ -15,7 +15,7 @@ jobs:
 stages:
   - test
   - deploy
-    if: branch != master
+    if: branch = develop
 
 before_install: echo 'before_install...'
 install: echo 'install...'
