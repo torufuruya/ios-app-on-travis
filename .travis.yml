@@ -9,14 +9,14 @@ jobs:
           script: echo 'compiling...'
         - stage: test
           script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1' test
-          script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.0.1' test
-          script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.0' test
+        - script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.0.1' test
+        - script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=12.0' test
         - stage: deploy
           if: branch = master
           script: echo 'deploying...'
 
 stages:
-  - compile
+  # - compile
   - test
   - deploy
 
