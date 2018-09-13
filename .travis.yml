@@ -1,16 +1,20 @@
 language: objective-c
+
 osx_image: xcode10
+
 xcode_project: ios-app-on-travis.xcodeproj
+
 xcode_scheme: ios-app-on-travisTests
 
 env:
     - DEVICE_NAME="iPhone SE" OS=10.3.1
     - DEVICE_NAME="iPhone 8" OS=11.0.1
     - DEVICE_NAME="iPhone X" OS=12.0
+
 jobs:
     include:
         - stage: test
-          script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination "platform=iOS Simulator,name=$DEVICE_NAME,OS=$OS" test
+          script:
         - stage: deploy
           env: DEVICE_NAME=iPhone X OS=12.0
           script: echo 'deploying...'
@@ -21,7 +25,11 @@ stages:
     if: branch IN (master)
 
 before_install: echo 'before_install...'
+
 install: echo 'install...'
+
 before_script: echo 'before_script...'
-script: echo 'script...'
+
+script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination "platform=iOS Simulator,name=$DEVICE_NAME,OS=$OS" test
+
 after_success: echo 'after_success...'
