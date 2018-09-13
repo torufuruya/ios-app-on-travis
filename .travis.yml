@@ -10,7 +10,7 @@ env:
 jobs:
     include:
         - stage: test
-          script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=${DEVICE_NAME},OS=${OS}' test
+          script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination "platform=iOS Simulator,name=$DEVICE_NAME,OS=$OS" test
         - stage: deploy
           env: DEVICE_NAME=iPhone X OS=12.0
           script: echo 'deploying...'
