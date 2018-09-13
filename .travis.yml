@@ -12,11 +12,14 @@ jobs:
         - stage: deploy
           if: branch = master
           script: echo 'deploying...'
-        - stage: finish
-          script: echo 'finishing...'
+        - stage: archive
+          script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travis -archivePath $PWD/build/ios-app-on-travis.xcarchive archive -sdk iphoneos CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
 
 stages:
   - compile
   - test
+  - name: archive
+    if: branch != master
   - deploy
+    if: branch != master
