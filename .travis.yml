@@ -10,3 +10,8 @@ jobs:
         - stage: deploy
           if: branch = master
           script: echo 'deploying...'
+
+stages:
+  - compile
+  - test
+  - deploy
