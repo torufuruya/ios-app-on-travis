@@ -5,11 +5,16 @@ xcode_scheme: ios-app-on-travisTests
 
 jobs:
     include:
+        - stage: compile
+          script: echo 'compiling...'
         - stage: test
           script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator test
         - stage: deploy
           if: branch = master
           script: echo 'deploying...'
+        - stage: finish
+          script: echo 'finishing...'
+
 
 stages:
   - compile
