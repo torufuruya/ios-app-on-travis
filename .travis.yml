@@ -1,3 +1,4 @@
 language: objective-c
 osx_image: xcode10
 xcode_project: ios-app-on-travis.xcodeproj
+xcode_scheme: ios-app-on-travisTests
