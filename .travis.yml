@@ -30,6 +30,6 @@ install: echo 'install...'
 
 before_script: echo 'before_script...'
 
-script: xcodebuild -project TRAVIS_XCODE_PROJECT -scheme TRAVIS_XCODE_SCHEME -sdk iphonesimulator -destination "$XCTEST_DESTINATION" test
+script: xcodebuild -project "$TRAVIS_XCODE_PROJECT" -scheme "$TRAVIS_XCODE_SCHEME" -sdk iphonesimulator -destination "$XCTEST_DESTINATION" test
 
 after_success: echo 'after_success...'
