@@ -33,7 +33,3 @@ before_install: echo 'before_install...'
 install: echo 'install...'
 
 before_script: echo 'before_script...'
-
-script: xcodebuild -project ios-app-on-travis.xcodeproj -scheme ios-app-on-travisTests -sdk iphonesimulator -destination "platform=iOS Simulator,name=$DEVICE_NAME,OS=$OS" test
-
-after_success: echo 'after_success...'
