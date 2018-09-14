@@ -24,7 +24,7 @@ jobs:
 stages:
   - test
   - scan
-    if: branch IN (master, develop) && $TRAVIS_PULL_REQUEST == "false"
+    if: branch IN (master, develop) && type != pull_request
   - name: deploy
     if: branch IN (master)
 
