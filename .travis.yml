@@ -15,7 +15,9 @@ jobs:
     include:
         - stage: deploy
           env: DEVICE_NAME=iPhone X OS=12.0
-          script: echo 'deploying...'
+          script:
+              - echo 'deploying...'
+              - echo 'deploy finished!'
 
 stages:
   - test
