@@ -23,7 +23,7 @@ jobs:
 
 stages:
   - test
-  - scan
+  - name: scan
     if: branch IN (master, develop) && type != pull_request
   - name: deploy
     if: branch IN (master)
