@@ -8,8 +8,8 @@ xcode_scheme: ios-app-on-travisTests
 
 env:
     - DEVICE_NAME="iPhone SE" OS=10.3.1
-    - DEVICE_NAME="iPhone 8" OS=11.0.1
-    - DEVICE_NAME="iPhone X" OS=12.0
+    # - DEVICE_NAME="iPhone 8" OS=11.0.1
+    # - DEVICE_NAME="iPhone X" OS=12.0
 
 jobs:
     include:
