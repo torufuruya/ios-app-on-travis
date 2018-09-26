@@ -11,10 +11,10 @@ stages:
   - name: scan
 jobs:
   include:
-  - name: test
+  - stage: test
     script: xcodebuild -project $TRAVIS_XCODE_PROJECT -scheme $TRAVIS_XCODE_SCHEME -sdk
       iphonesimulator -destination "$XCTEST_DESTINATION" test
-  - name: scan
+  - stage: scan
     script: echo 'scanning...'
   - name: deploy
     if: branch = master
