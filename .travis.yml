@@ -8,10 +8,14 @@ env:
 - XCTEST_DESTINATION="platform=iOS Simulator,OS=10.3.1,name=iPhone SE"
 jobs:
   include:
-  - script: echo 'scanning...'
-  - script:
+  - name: scan
+    script: echo 'scanning...'
+  - name: deploy
+    if: branch = master
+    script:
     - echo 'deploying...'
     - echo 'deploy finished!'
+
 before_install: echo 'before_install...'
 install: echo 'install...'
 before_script: echo 'before_script...'
