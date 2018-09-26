@@ -13,20 +13,20 @@ env:
 
 jobs:
     include:
-        - stage: scan
+        - #hoge
           script: echo 'scanning...'
-        - stage: deploy
+        - #fuga
           env: DEVICE_NAME=iPhone X OS=12.0
           script:
               - echo 'deploying...'
               - echo 'deploy finished!'
 
-stages:
-  - test
-  - name: scan
-    if: branch IN (master, develop) && type != pull_request
-  - name: deploy
-    if: branch IN (master)
+# stages:
+#   - test
+#   - name: scan
+#     if: branch IN (master, develop) && type != pull_request
+#   - name: deploy
+#     if: branch IN (master)
 
 before_install: echo 'before_install...'
 
