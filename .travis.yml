@@ -6,8 +6,14 @@ env:
 - XCTEST_DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone X"
 - XCTEST_DESTINATION="platform=iOS Simulator,OS=11.0.1,name=iPhone 8"
 - XCTEST_DESTINATION="platform=iOS Simulator,OS=10.3.1,name=iPhone SE"
+stages:
+  - name: test
+  - name: scan
 jobs:
   include:
+  - name: test
+    script: xcodebuild -project $TRAVIS_XCODE_PROJECT -scheme $TRAVIS_XCODE_SCHEME -sdk
+      iphonesimulator -destination "$XCTEST_DESTINATION" test
   - name: scan
     script: echo 'scanning...'
   - name: deploy
@@ -19,9 +25,7 @@ jobs:
 before_install: echo 'before_install...'
 install: echo 'install...'
 before_script: echo 'before_script...'
-script: xcodebuild -project $TRAVIS_XCODE_PROJECT -scheme $TRAVIS_XCODE_SCHEME -sdk
-  iphonesimulator -destination "$XCTEST_DESTINATION" test
-after_success: echo 'after_success...'
+
 notifications:
   slack:
     secure: fZA7B+TccV3dkSCx8Vy0Cm8qDEzDoRIRxFox/u081hkl3KVUCNucM++5U+o4ONBinWFo1S6khCF+EGU2X/+KYNA8xphmMVSnY0FjSQWBuh+QfMuYrmyS2+df7hN1U3N5Iy4H6h1mN0OCWi838/je5Zlwj916z+fax8GQid2oPwKmgTakdTtCTNrdcovjQe4Wf5Pc2R6h212QYryttElRvcFkd1cA1vxgS4wepbHsv9mrH/O1DVo9NMbLZXUJyghHoe4K7DWDciZrM9GZP/ZwbiQmr/L0zaGLQK0yD7pLRqg/eckGD0S/8jB98XVMl2XlGGVtHjU+ALwGbyJF+P8p0Ga7LyCfxXBfa6pXIn7FoTI7zufkgKaCoa4oQTsR3xRtzgAF9V80CBuFgHgJsBjCxPvXSKF2tXcOQHYw1JuVZvWkUP9hQaU1LWWkq+c4VRSeWcXo14VR97T4wkuO2TtbffFancJ4DZoUV+3nl+lAq/i7Hora7xQK9zBMc7bQejxmspF8h6BQL3C0UOY0iM1sZWxWNrwlKeSvburpjP14NVMwuR28G8l4VX/UMLserpYme67JvOkXFnz2SDiddQdO20rPhvozf2x3dx6SGMB9K007fr6D23VakmPbIDfaA5g5aZ8nwNgEE3KwrRPNXADABZm977u5A+NoD0Zo8Jah62M=
